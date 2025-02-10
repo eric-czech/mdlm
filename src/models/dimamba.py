@@ -3,7 +3,6 @@ from functools import partial
 from typing import Optional, Tuple, Union
 
 import huggingface_hub
-import numpy as np
 import omegaconf
 import torch
 import torch.nn as nn
@@ -36,7 +35,7 @@ from mamba_ssm.ops.triton.selective_state_update import (
     selective_state_update,
 )
 
-from models.dit import (
+from .dit import (
     TimestepEmbedder,
     bias_dropout_add_scale_fused_inference,
     bias_dropout_add_scale_fused_train,

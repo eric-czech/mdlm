@@ -8,9 +8,10 @@ import rich.syntax
 import rich.tree
 import torch
 
-import dataloader
-import diffusion
-import utils
+import pl.dataloader as dataloader
+import pl.module as diffusion
+import pl.utils as lightning_utils
+import utils as utils
 
 omegaconf.OmegaConf.register_new_resolver(
   'cwd', os.getcwd)
@@ -190,7 +191,7 @@ def main(config):
   L.seed_everything(config.seed)
   _print_config(config, resolve=True, save_cfg=True)
   
-  logger = utils.get_logger(__name__)
+  logger = lightning_utils.get_logger(__name__)
   tokenizer = dataloader.get_tokenizer(config)
 
   if config.mode == 'sample_eval':
